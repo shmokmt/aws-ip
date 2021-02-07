@@ -1,6 +1,7 @@
 # aws-ip
 
 ![Test](https://github.com/shmokmt/aws-ip/workflows/Test/badge.svg)
+[![Go Reference](https://pkg.go.dev/badge/github.com/shmokmt/aws-ip.svg)](https://pkg.go.dev/github.com/shmokmt/aws-ip)
 
 The package to get [AWS IP address ranges](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
 
