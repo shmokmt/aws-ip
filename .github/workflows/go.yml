@@ -1,0 +1,40 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+        go:
+          - "1.15"
+
+    steps:
+      - name: Set up Go ${{ matrix.go }}
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+        id: go
+      - run: |
+          go version
+          echo GOPATH="$GITHUB_WORKSPACE" >> "$GITHUB_ENV"
+        shell: bash
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+        with:
+          path: src/github.com/shmokmt/aws-ip
+
+      - name: Test
+        run: go test -v ./...
+        env:
+          GO111MODULE: "on"
+        shell: bash
+        working-directory: src/github.com/shmokmt/aws-ip
