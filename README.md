@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-    prefixes := awsip.Query().Service("CODEBUILD").NetworkBorderGroup().Select()
+    prefixes := awsip.Query().Service("CODEBUILD").Select()
     for _, p := range prefixes {
         fmt.Println(p.IPPrefix)
         fmt.Println(p.Region)
