@@ -1,18 +1,19 @@
 // Tha package to get AWS IP ranges.
 package aws_ip
 
-type querier struct {
+// Querier executes query.
+type Querier struct {
 	Ranges IPRanges
 }
 
-// Query creates an object for filtering.
-func Query() *querier {
-	return &querier{
+// Query creates Querier.
+func Query() *Querier {
+	return &Querier{
 		Ranges: *ipRanges,
 	}
 }
 
-func (q *querier) filter(fn func(*IPRange) bool) (result IPRanges) {
+func (q *Querier) filter(fn func(*IPRange) bool) (result IPRanges) {
 	for _, v := range q.Ranges {
 		if fn(v) {
 			result = append(result, v)
@@ -22,7 +23,7 @@ func (q *querier) filter(fn func(*IPRange) bool) (result IPRanges) {
 }
 
 // Region filters IPRanges by region's name.
-func (q *querier) Region(region string) *querier {
+func (q *Querier) Region(region string) *Querier {
 	fn := func(ipr *IPRange) bool {
 		return ipr.Region == region
 	}
@@ -31,7 +32,7 @@ func (q *querier) Region(region string) *querier {
 }
 
 // Service filters IPRanges by service's name.
-func (q *querier) Service(service string) *querier {
+func (q *Querier) Service(service string) *Querier {
 	fn := func(ipr *IPRange) bool {
 		return ipr.Service == service
 	}
@@ -40,7 +41,7 @@ func (q *querier) Service(service string) *querier {
 }
 
 // NetworkBorderGroup filters IPRanges by network's name.
-func (q *querier) NetworkBorderGroup(network string) *querier {
+func (q *Querier) NetworkBorderGroup(network string) *Querier {
 	fn := func(ipr *IPRange) bool {
 		return ipr.NetworkBorderGroup == network
 	}
@@ -49,6 +50,6 @@ func (q *querier) NetworkBorderGroup(network string) *querier {
 }
 
 // Select returns IPRanges.
-func (q *querier) Select() IPRanges {
+func (q *Querier) Select() IPRanges {
 	return q.Ranges
 }
