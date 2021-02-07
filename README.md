@@ -1,5 +1,7 @@
 # aws-ip
 
+![Test](https://github.com/shmokmt/aws-ip/workflows/Test/badge.svg)
+
 The package to get [AWS IP address ranges](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
 
 ## SYNOPSIS
