@@ -11,6 +11,8 @@ The package to get [AWS IP address ranges](https://docs.aws.amazon.com/general/l
 package main
 
 import (
+    "fmt"
+
     awsip "github.com/shmokmt/aws-ip"
 )
 
