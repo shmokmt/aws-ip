@@ -1,3 +1,4 @@
+// The package to get AWS IP ranges.
 package aws_ip
 
 // IPRanges has various information related to `ip_prefix`.

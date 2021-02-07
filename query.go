@@ -1,10 +1,11 @@
+// Tha package to get AWS IP ranges.
 package aws_ip
 
 type querier struct {
 	Ranges IPRanges
 }
 
-// Query creates querier object.
+// Query creates an object for filtering.
 func Query() *querier {
 	return &querier{
 		Ranges: *ipRanges,
